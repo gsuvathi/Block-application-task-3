@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BlogSpace | Home</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            BlogSpace
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <a href="#blogs">
+                Blogs
+            </a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                WELCOME TO BLOGSPACE
+            </p>
+
+            <h1>
+                Share Your Stories.
+                <span>Inspire the World.</span>
+            </h1>
+
+            <p class="hero-text">
+                Write, publish and discover amazing stories
+                from passionate writers around the world.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="register.html" class="primary-btn">
+                    Start Writing
+                </a>
+
+                <a href="#blogs" class="secondary-btn">
+                    Explore Blogs
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories" id="categories">
+
+        <div class="section-title">
+
+            <p>EXPLORE</p>
+
+            <h2>Popular Categories</h2>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category-card">
+
+                <div class="icon">💻</div>
+
+                <h3>Technology</h3>
+
+                <p>
+                    Latest technology and programming articles.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="icon">🚀</div>
+
+                <h3>Development</h3>
+
+                <p>
+                    Learn web development and software skills.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="icon">📚</div>
+
+                <h3>Education</h3>
+
+                <p>
+                    Knowledge, learning and educational content.
+                </p>
+
+            </div>
+
+
+            <div class="category-card">
+
+                <div class="icon">💼</div>
+
+                <h3>Career</h3>
+
+                <p>
+                    Career advice and professional growth.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BLOGS -->
+
+    <section class="blogs" id="blogs">
+
+        <div class="section-title">
+
+            <p>OUR BLOG</p>
+
+            <h2>Latest Articles</h2>
+
+        </div>
+
+
+        <div class="blog-grid">
+
+
+            <article class="blog-card">
+
+                <div class="blog-image">
+                    💻
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Technology
+                    </span>
+
+                    <h3>
+                        Getting Started With Web Development
+                    </h3>
+
+                    <p>
+                        Learn the basic concepts of HTML, CSS and
+                        JavaScript and start building websites.
+                    </p>
+
+                    <div class="blog-info">
+
+                        <span>
+                            By Admin
+                        </span>
+
+                        <a href="#">
+                            Read More →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="blog-card">
+
+                <div class="blog-image">
+                    🚀
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Development
+                    </span>
+
+                    <h3>
+                        How to Build Your First Website
+                    </h3>
+
+                    <p>
+                        A beginner-friendly guide to creating
+                        your first responsive website.
+                    </p>
+
+                    <div class="blog-info">
+
+                        <span>
+                            By Admin
+                        </span>
+
+                        <a href="#">
+                            Read More →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="blog-card">
+
+                <div class="blog-image">
+                    📚
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="category">
+                        Education
+                    </span>
+
+                    <h3>
+                        Why Learning Programming Matters
+                    </h3>
+
+                    <p>
+                        Discover how programming skills can help
+                        you build a successful technology career.
+                    </p>
+
+                    <div class="blog-info">
+
+                        <span>
+                            By Admin
+                        </span>
+
+                        <a href="#">
+                            Read More →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <h2>
+            Have a story to share?
+        </h2>
+
+        <p>
+            Create your account and start publishing today.
+        </p>
+
+        <a href="register.html" class="primary-btn">
+            Create Account
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <h2>BlogSpace</h2>
+
+                <p>
+                    A simple platform to write, share and
+                    discover amazing stories.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+
+                <a href="login.html">Login</a>
+
+                <a href="register.html">Register</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 BlogSpace. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
