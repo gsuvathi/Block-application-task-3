@@ -5,204 +5,190 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>BlogSpace | Dashboard</title>
 
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css">
 
 </head>
 
 <body>
 
+<nav class="navbar">
 
-    <!-- NAVBAR -->
+    <a href="index.html" class="logo">
+        BlogSpace
+    </a>
 
-    <header class="navbar">
+    <div class="nav-links">
 
-        <a href="index.html"
-           class="logo">
-
-            BlogSpace
-
+        <a href="index.html">
+            Home
         </a>
 
+        <a href="dashboard.html" class="active">
+            Dashboard
+        </a>
 
-        <nav class="nav-links"
-             id="navLinks">
+        <a
+            href="create-blog.html"
+            class="nav-button">
+            Create Blog
+        </a>
 
-            <a href="index.html">
-                Home
-            </a>
+        <a
+            href="#"
+            onclick="logoutUser(); return false;">
+            Logout
+        </a>
 
-            <a href="dashboard.html"
-               class="active">
+    </div>
 
+</nav>
+
+
+<main class="dashboard-container">
+
+    <section class="dashboard-header">
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR ACCOUNT
+            </p>
+
+            <h1>
                 Dashboard
+            </h1>
 
-            </a>
-
-            <a href="create-blog.html"
-               class="register-btn">
-
-                Create Blog
-
-            </a>
-
-            <a href="#"
-               onclick="logoutUser()">
-
-                Logout
-
-            </a>
-
-        </nav>
-
-
-        <button class="menu-btn"
-                onclick="toggleMenu()">
-
-            ☰
-
-        </button>
-
-    </header>
-
-
-    <!-- DASHBOARD -->
-
-    <main class="dashboard">
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <p class="small-title">
-                    YOUR ACCOUNT
-                </p>
-
-                <h1>
-                    Dashboard
-                </h1>
-
-                <p id="welcomeUser">
-                    Welcome back!
-                </p>
-
-            </div>
-
-
-            <a href="create-blog.html"
-               class="primary-btn">
-
-                + Create Blog
-
-            </a>
+            <p
+                id="welcomeUser"
+                class="subtitle">
+                Welcome back!
+            </p>
 
         </div>
 
 
-        <!-- STATS -->
+        <a
+            href="create-blog.html"
+            class="primary-btn">
 
-        <section class="stats-grid">
+            + Create Blog
 
-            <div class="stat-card">
+        </a>
 
-                <div class="stat-icon">
-                    📝
-                </div>
+    </section>
 
-                <div>
 
-                    <h3 id="totalBlogs">
-                        0
-                    </h3>
+    <section class="stats-grid">
 
-                    <p>
-                        Total Blogs
-                    </p>
+        <div class="stat-card">
 
-                </div>
+            <div class="stat-icon">
+                📝
+            </div>
+
+            <div>
+
+                <h2 id="totalBlogs">
+                    0
+                </h2>
+
+                <p>
+                    Total Blogs
+                </p>
 
             </div>
 
+        </div>
 
-            <div class="stat-card">
 
-                <div class="stat-icon">
-                    👁️
-                </div>
+        <div class="stat-card">
 
-                <div>
+            <div class="stat-icon">
+                👁️
+            </div>
 
-                    <h3>
-                        0
-                    </h3>
+            <div>
 
-                    <p>
-                        Total Views
-                    </p>
+                <h2>
+                    0
+                </h2>
 
-                </div>
+                <p>
+                    Total Views
+                </p>
 
             </div>
 
+        </div>
 
-            <div class="stat-card">
 
-                <div class="stat-icon">
-                    ❤️
-                </div>
+        <div class="stat-card">
 
-                <div>
+            <div class="stat-icon">
+                ❤️
+            </div>
 
-                    <h3>
-                        0
-                    </h3>
+            <div>
 
-                    <p>
-                        Likes
-                    </p>
+                <h2>
+                    0
+                </h2>
 
-                </div>
+                <p>
+                    Likes
+                </p>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- BLOG SECTION -->
+    <section class="blogs-section">
 
-        <section class="dashboard-blogs">
+        <div class="section-header">
 
-            <div class="dashboard-title">
+            <div>
+
+                <p class="eyebrow">
+                    YOUR CONTENT
+                </p>
 
                 <h2>
                     My Blogs
                 </h2>
 
-                <input
-                    type="text"
-                    id="searchBlogs"
-                    placeholder="Search blogs..."
-                    onkeyup="searchBlogs()">
-
             </div>
 
 
-            <div id="dashboardBlogList"
-                 class="dashboard-blog-list">
+            <input
+                type="text"
+                id="searchBlogs"
+                placeholder="Search blogs..."
+                oninput="searchBlogs()">
 
-            </div>
-
-        </section>
-
-    </main>
+        </div>
 
 
-    <script src="js/script.js"></script>
+        <div id="dashboardBlogList">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="js/script.js"></script>
 
 </body>
 

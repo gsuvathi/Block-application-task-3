@@ -1,49 +1,104 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
-
-const connectDB = require("./config/db");
-
-const authRoutes = require("./routes/authRoutes");
-const blogRoutes = require("./routes/blogRoutes");
 
 dotenv.config();
 
 const app = express();
 
-// Middleware
+
+// ==========================================
+// MIDDLEWARE
+// ==========================================
+
 app.use(cors());
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Serve existing frontend files
-app.use(express.static(path.join(__dirname)));
+app.use(express.urlencoded({
+    extended: true
+}));
 
-// Test API
-app.get("/api", (req, res) => {
-    res.json({
-        message: "Blog Application Backend is running successfully"
+
+// ==========================================
+// STATIC FILES
+// ==========================================
+
+app.use(express.static(__dirname));
+
+
+// ==========================================
+// MONGODB
+// ==========================================
+
+mongoose.connect(process.env.MONGO_URI)
+
+    .then(() => {
+
+        console.log("MongoDB connected successfully");
+
+    })
+
+    .catch((error) => {
+
+        console.error(
+            "MongoDB connection failed:",
+            error.message
+        );
+
     });
+
+
+// ==========================================
+// ROUTES
+// ==========================================
+
+const authRoutes =
+    require("./routes/authRoutes");
+
+const blogRoutes =
+    require("./routes/blogRoutes");
+
+
+app.use(
+    "/api/auth",
+    authRoutes
+);
+
+app.use(
+    "/api/blogs",
+    blogRoutes
+);
+
+
+// ==========================================
+// HOME
+// ==========================================
+
+app.get("/", (req, res) => {
+
+    res.sendFile(
+        path.join(
+            __dirname,
+            "index.html"
+        )
+    );
+
 });
 
-// API Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/blogs", blogRoutes);
 
-// Start server
+// ==========================================
+// SERVER
+// ==========================================
+
 const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-    try {
-        await connectDB();
+app.listen(PORT, () => {
 
-        app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}`);
-        });
-    } catch (error) {
-        console.error("Server startup failed:", error.message);
-    }
-};
+    console.log(
+        `Server running on http://localhost:${PORT}`
+    );
 
-startServer();
+});

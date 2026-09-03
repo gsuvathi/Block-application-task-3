@@ -5,171 +5,225 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>BlogSpace | Register</title>
+    <title>BlogSpace - Register</title>
 
-    <link rel="stylesheet"
-          href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
-<body class="auth-page">
+<body>
 
+<div class="auth-page">
 
-    <!-- NAVBAR -->
+    <div class="auth-card">
 
-    <header class="navbar">
-
-        <a href="index.html" class="logo">
+        <div class="auth-logo">
             BlogSpace
-        </a>
+        </div>
 
-        <nav class="nav-links" id="navLinks">
+        <h1 class="auth-title">
+            Create Account
+        </h1>
 
-            <a href="index.html">
-                Home
-            </a>
+        <p class="auth-subtitle">
+            Join BlogSpace and start sharing your stories
+        </p>
 
-            <a href="index.html#blogs">
-                Blogs
-            </a>
+
+        <form id="registerForm">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    class="form-control"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Create a password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="auth-button"
+            >
+                Create Account
+            </button>
+
+
+        </form>
+
+
+        <p
+            id="registerMessage"
+            style="
+                margin-top:15px;
+                font-size:14px;
+            "
+        ></p>
+
+
+        <div class="auth-footer">
+
+            Already have an account?
 
             <a href="login.html">
                 Login
             </a>
 
-            <a href="register.html"
-               class="register-btn">
-                Register
-            </a>
-
-        </nav>
-
-        <button class="menu-btn"
-                onclick="toggleMenu()">
-            ☰
-        </button>
-
-    </header>
-
-
-    <!-- REGISTER -->
-
-    <main class="auth-container">
-
-        <div class="auth-card">
-
-            <div class="auth-header">
-
-                <h1>
-                    Create Account
-                </h1>
-
-                <p>
-                    Join BlogSpace and start sharing your stories.
-                </p>
-
-            </div>
-
-
-            <form id="registerForm">
-
-
-                <div class="form-group">
-
-                    <label for="registerName">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="registerName"
-                        placeholder="Enter your full name"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="registerEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="registerEmail"
-                        placeholder="Enter your email"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="registerPassword">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="registerPassword"
-                        placeholder="Enter password"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="confirmPassword">
-                        Confirm Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Confirm password"
-                        required>
-
-                </div>
-
-
-                <button type="submit"
-                        class="form-btn">
-
-                    Create Account
-
-                </button>
-
-
-                <p id="registerMessage"
-                   class="form-message">
-                </p>
-
-
-            </form>
-
-
-            <div class="auth-bottom">
-
-                <p>
-                    Already have an account?
-                    <a href="login.html">
-                        Login
-                    </a>
-                </p>
-
-            </div>
-
         </div>
 
-    </main>
+    </div>
+
+</div>
 
 
-    <script src="js/script.js"></script>
+<script>
+
+document
+    .getElementById("registerForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        const message =
+            document
+                .getElementById("registerMessage");
+
+
+        try {
+
+            const response =
+                await fetch("/api/auth/register", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        password: password
+
+                    })
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            if (response.ok) {
+
+                message.textContent =
+                    "Account created successfully!";
+
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "login.html";
+
+                }, 800);
+
+            }
+
+            else {
+
+                message.textContent =
+                    data.message ||
+                    "Registration failed.";
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            message.textContent =
+                "Unable to connect to server.";
+
+        }
+
+    });
+
+</script>
 
 </body>
 
