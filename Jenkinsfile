@@ -5,21 +5,21 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Checking out Blog Application source code...'
+                echo 'Checking out Blog Application...'
                 checkout scm
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                echo 'Installing Node.js dependencies...'
+                echo 'Installing dependencies...'
                 bat 'npm install'
             }
         }
 
         stage('CI Check') {
             steps {
-                echo 'Checking Blog Application files...'
+                echo 'Checking project files...'
                 bat 'node --version'
                 bat 'npm --version'
                 bat 'if not exist server.js exit /b 1'
@@ -29,7 +29,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Blog Application CI build completed successfully.'
+                echo 'Blog Application build completed.'
             }
         }
     }
